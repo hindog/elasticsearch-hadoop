@@ -50,30 +50,30 @@ public abstract class Version {
             LogFactory.getLog(Version.class).warn("Cannot detect ES-Hadoop jar; it typically indicates a deployment issue...");
         }
 
-        if (res != null) {
-            List<URL> urls = Collections.list(res);
-            Set<String> normalized = new LinkedHashSet<String>();
-
-            for (URL url : urls) {
-                normalized.add(StringUtils.normalize(url.toString()));
-            }
-
-            int foundJars = 0;
-            if (normalized.size() > 1) {
-                StringBuilder sb = new StringBuilder("Multiple ES-Hadoop versions detected in the classpath; please use only one\n");
-                for (String s : normalized) {
-                    if (s.contains("jar:")) {
-                        foundJars++;
-                        sb.append(s.replace("!/" + target, ""));
-                        sb.append("\n");
-                    }
-                }
-                if (foundJars > 1) {
-                    LogFactory.getLog(Version.class).fatal(sb);
-                    throw new Error(sb.toString());
-                }
-            }
-        }
+//        if (res != null) {
+//            List<URL> urls = Collections.list(res);
+//            Set<String> normalized = new LinkedHashSet<String>();
+//
+//            for (URL url : urls) {
+//                normalized.add(StringUtils.normalize(url.toString()));
+//            }
+//
+//            int foundJars = 0;
+//            if (normalized.size() > 1) {
+//                StringBuilder sb = new StringBuilder("Multiple ES-Hadoop versions detected in the classpath; please use only one\n");
+//                for (String s : normalized) {
+//                    if (s.contains("jar:")) {
+//                        foundJars++;
+//                        sb.append(s.replace("!/" + target, ""));
+//                        sb.append("\n");
+//                    }
+//                }
+//                if (foundJars > 1) {
+//                    LogFactory.getLog(Version.class).fatal(sb);
+//                    throw new Error(sb.toString());
+//                }
+//            }
+//        }
 
         Properties build = new Properties();
         try {
